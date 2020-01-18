@@ -1,0 +1,93 @@
+#head{
+    font-weight: bolder;
+    font-family: monospace;
+    font-size: 80px;
+    text-align: center;
+}
+
+#mainDiv{
+    margin-top: 5px;
+}
+
+.head2{
+    /* font-weight: bold; */
+    font-family: monospace;
+    font-size: 20px;
+    text-align: right;
+    color: #00bfff;
+    padding-top: 4%;
+    padding-bottom: 3%;
+    padding-right: 8%;
+}
+
+.icons{
+    padding-top: 1%;
+    width:100%;
+}
+.icongo,.icongit{
+    display: inline-block;
+    margin:3;
+}
+
+.libraryInput{
+    margin-left: 3%;
+    padding-top: 3px;
+}
+
+.downloadbutton{
+    width:200px;
+    height: 50px;
+}
+.resetbutton{
+    width:200px;
+    height: 50px;
+    margin-left: 2%;
+}
+.likeus {
+    position: fixed;
+    bottom: 2%;
+    right: 2%;
+  }
+
+  .side{
+     
+     padding-left: 60%;
+      
+    
+      padding-right: 10%;
+     
+      
+     
+  }
+  .sideline{
+    border-left: 6px solid #9254e9;
+    position: fixed;
+    left:0;
+    top:0;
+    width:10 !important;
+    height:100% !important;  
+ }
+
+ .mat-list-item.chip1{
+   margin-top:-8px !important;
+     color: #2c085e;
+    
+     font-size: 17px;
+    
+ }
+ .mat-list-item.chip2{
+        padding-top: 11%;
+      color: #2c085e;
+     
+     font-size: 17px;
+      
+     
+  }
+  .mat-list-item.chip3{
+    padding-top: 11%;
+  color: #2c085e;
+  
+     font-size: 17px;
+  
+ 
+}
