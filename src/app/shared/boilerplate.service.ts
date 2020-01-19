@@ -8,7 +8,7 @@ import { map, catchError } from 'rxjs/operators';
 export class BoilerPlate{
     constructor(private http:HttpClient){}
     getBoilerPlate(request){
-        var url = "http://localhost:8080/simpleapp"
+        var url = environment.serverUrl+"/simpleapp"
         return this.http.post(url,request,{responseType: 'arraybuffer'});
     }
 }
