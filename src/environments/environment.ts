@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  serverUrl : "http://ec2-13-126-215-195.ap-south-1.compute.amazonaws.com:90"
+  serverUrl : "http://ec2-13-126-215-195.ap-south-1.compute.amazonaws.com:9090"
 };
 
 /*
