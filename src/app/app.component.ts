@@ -11,7 +11,7 @@ export class AppComponent {
   title = 'Golang AppGen';
   selectedAppTypeIndex = 0;
   selectedLibraryIndex = 0;
-  activeLibrary = ["spf13/kingpin","urfave/cli","alecthomas/kingpin"]
+  activeLibrary = ["spf13/cobra","urfave/cli","alecthomas/kingpin"]
   appName ="";
 
   appType = ["cli","webservice","webclient"]
