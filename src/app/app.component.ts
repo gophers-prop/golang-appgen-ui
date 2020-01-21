@@ -8,15 +8,15 @@ import * as FileSaver from 'file-saver';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'go-initializr';
+  title = 'Golang AppGen';
   selectedAppTypeIndex = 0;
   selectedLibraryIndex = 0;
-  activeLibrary = ["urfave","spf13/kingpin","alecthomas/kingpin"]
+  activeLibrary = ["spf13/kingpin","urfave/cli","alecthomas/kingpin"]
   appName ="";
 
   appType = ["cli","webservice","webclient"]
   libraries = [
-    ["urfave","spf13/cobra","alecthomas/kingpin"],
+    ["spf13/cobra","urfave/cli","alecthomas/kingpin"],
     ["gin-gonic/gin","go-martini/martini","goji/goji"],
     ["net/http","go-resty/resty","jcmturner/restclient"]
   ]
