@@ -17,8 +17,8 @@ export class AppComponent {
   appType = ["cli","webservice","webclient"]
   libraries = [
     ["urfave","spf13/cobra","alecthomas/kingpin"],
-    ["gin-gonic/gin","go-martini/martini","goji/goji","gorilla/mux"],
-    ["go-resty/resty","jcmturner/restclient"]
+    ["gin-gonic/gin","go-martini/martini","goji/goji"],
+    ["net/http","go-resty/resty","jcmturner/restclient"]
   ]
 
   constructor(private boilerplate:BoilerPlate){}
