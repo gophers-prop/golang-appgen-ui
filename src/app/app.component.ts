@@ -21,16 +21,24 @@ export class AppComponent {
     ["net/http","go-resty/resty","jcmturner/restclient"]
   ]
   loggingFrameworks = ["golang/glog","sirupsen/logrus"]
-
+  logFrameworkChecked = [false,false]
   constructor(private boilerplate:BoilerPlate){}
   
 
   getBoilerPlate(){
+   var  logframework = "" 
+    for(let i=0;i<this.logFrameworkChecked.length;i++){
+      if(this.logFrameworkChecked[i] ==true){
+        logframework = this.loggingFrameworks[i]
+      }
+    } 
     var request ={
       "appType": this.appType[this.selectedAppTypeIndex],
       "library" : this.libraries[this.selectedAppTypeIndex][this.selectedLibraryIndex],
-      "appName" : this.appName
+      "appName" : this.appName,
+      "loggingframework" : logframework
     };
+    console.log(request)
     this.boilerplate.getBoilerPlate(request).subscribe(res =>{
       this.downloadFile(res);
     },err =>{
@@ -55,5 +63,12 @@ export class AppComponent {
     this.selectedAppTypeIndex=0
     this.selectedLibraryIndex=0
     this.appName=""
+  }
+  setLoggingFramework(event,index){
+    this.logFrameworkChecked[index] = event.checked
+    for(let i=0;i<this.logFrameworkChecked.length;i++){
+      if (i == index )continue;
+        this.logFrameworkChecked[i] = false
+      } 
   }
 }
