@@ -20,6 +20,7 @@ export class AppComponent {
     ["gin-gonic/gin","go-martini/martini","goji/goji"],
     ["net/http","go-resty/resty","jcmturner/restclient"]
   ]
+  loggingFrameworks = ["golang/glog","sirupsen/logrus"]
 
   constructor(private boilerplate:BoilerPlate){}
   

@@ -26,6 +26,8 @@
         <mat-divider></mat-divider>
         <mat-list-item class="chip2"> Package </mat-list-item>
         <mat-divider style="margin-top:0em;"></mat-divider>
+        <mat-list-item class="chip2"> Logging Packages </mat-list-item>
+        <mat-divider style="margin-top:0em;"></mat-divider>
         <mat-list-item class="chip3"> App Name </mat-list-item>
         <mat-divider></mat-divider>
       </mat-list>
@@ -36,19 +38,25 @@
     <div fxLayout="row" style="margin-left: 5%;">
       <div fxFlex.gt-sm="100" fxFlex="100">
         <mat-tab-group mat-stretch-tabs [selectedIndex]="selectedAppTypeIndex"
-          (selectedIndexChange)="setSelectedAppTypeTab($event)">
+          (selectedIndexChange)="setSelectedAppTypeTab($event)" dynamicHeight="true">
           <mat-tab *ngFor="let type of appType; let index = index" [label]="type">
-            <div fxLayout="row" style="padding-top: 18px;">
+            <div fxLayout="row" style="margin-top: 18px;">
               <mat-tab-group [selectedIndex]="selectedLibraryIndex"
-                (selectedIndexChange)="setSelectedLibraryTab($event)">
+                (selectedIndexChange)="setSelectedLibraryTab($event)" dynamicHeight="true">
                 <mat-tab *ngFor="let library of activeLibrary; let index = index" [label]="library"></mat-tab>
+                
               </mat-tab-group>
+              
+            
               <!-- <div class="libraryInput">
                 <mat-form-field>
                   <input matInput placeholder="Search library" [disabled]="true">
                 </mat-form-field>
               </div> -->
             </div>
+            <div fxLayout="row" style="margin-top: 18px;">
+              <mat-checkbox *ngFor="let logPackageName of loggingFrameworks;">{{logPackageName}}</mat-checkbox>
+              </div>
           </mat-tab>
         </mat-tab-group>
         <div style="margin-top: 14px;">

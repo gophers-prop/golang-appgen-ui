@@ -18,7 +18,7 @@ import {MatListModule} from '@angular/material/list';
 import { HttpClientModule } from '@angular/common/http';
 import { BoilerPlate } from './shared/boilerplate.service';
 import {FormsModule} from '@angular/forms';  
-
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 @NgModule({
@@ -42,7 +42,8 @@ import {FormsModule} from '@angular/forms';
     MatCardModule,
     MatListModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatCheckboxModule
   ],
   providers: [BoilerPlate],
   bootstrap: [AppComponent]
