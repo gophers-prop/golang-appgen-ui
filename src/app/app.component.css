@@ -38,6 +38,13 @@
     width:200px;
     height: 50px;
 }
+
+.explorebutton{
+    width:200px;
+    height: 50px;
+    margin-left: 2%;
+}
+
 .resetbutton{
     width:200px;
     height: 50px;
