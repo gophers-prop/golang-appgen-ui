@@ -11,4 +11,9 @@ export class BoilerPlate{
         var url = environment.serverUrl+"/simpleapp"
         return this.http.post(url,request,{responseType: 'arraybuffer'});
     }
+
+    exploreBoilerPlate(request){
+        var url = environment.serverUrl+"/exploreapp"
+        return this.http.post(url,request,{responseType: 'arraybuffer'});
+    }
 }

@@ -24,6 +24,32 @@ export class AppComponent {
   logFrameworkChecked = [false,false]
   constructor(private boilerplate:BoilerPlate){}
   
+  explore(){
+    var btn = document.getElementById("explore");
+    btn.innerHTML = 'Preparing';   
+    var  logframework = "" 
+    for(let i=0;i<this.logFrameworkChecked.length;i++){
+      if(this.logFrameworkChecked[i] ==true){
+        logframework = this.loggingFrameworks[i]
+      }
+    } 
+    var request ={
+      "appType": this.appType[this.selectedAppTypeIndex],
+      "library" : this.libraries[this.selectedAppTypeIndex][this.selectedLibraryIndex],
+      "appName" : this.appName,
+      "loggingframework" : logframework
+    };
+    console.log(request)
+    this.boilerplate.exploreBoilerPlate(request).subscribe(res =>{
+      btn.innerHTML = 'Explore';
+      var childWindow = window.open("https://codesandbox.io/embed/github/gophers-prop/"+this.appName);
+    },err =>{
+      console.log(err)
+    });
+    
+   
+    //use 's' instead of embed for full sandbox
+  }
 
   getBoilerPlate(){
    var  logframework = "" 
