@@ -66,8 +66,8 @@
           </mat-form-field>
         </div>
         <div style="margin-top: 5%;">
-          <button mat-raised-button class="downloadbutton" id="download" color="primary" (click)="getBoilerPlate()">Download</button>
-          <button mat-raised-button class="explorebutton" id="explore" (click)="explore()">Explore</button>
+          <button mat-raised-button class="downloadbutton" id="download" color="primary" [disabled]=!isValidAppName() (click)="getBoilerPlate()">Download</button>
+          <button mat-raised-button class="explorebutton" id="explore" [disabled]=!isValidAppName() (click)="explore()">Explore</button>
           <button mat-raised-button class="resetbutton" (click)="reset()">Reset</button>
           <button class="likeus" mat-fab aria-label="Example icon-button with a heart icon">
             <mat-icon>favorite</mat-icon>
