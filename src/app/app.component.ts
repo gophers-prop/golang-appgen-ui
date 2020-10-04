@@ -23,6 +23,10 @@ export class AppComponent {
   loggingFrameworks = ["golang/glog","sirupsen/logrus"]
   logFrameworkChecked = [false,false]
   constructor(private boilerplate:BoilerPlate){}
+
+  isValidAppName() {
+    return /^([a-zA-Z]{1,20})$/.test(this.appName);
+  }
   
   explore(){
     var btn = document.getElementById("explore");
