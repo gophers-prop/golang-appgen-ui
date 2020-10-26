@@ -16,4 +16,9 @@ export class BoilerPlate{
         var url = environment.serverUrl+"/exploreapp"
         return this.http.post(url,request,{responseType: 'arraybuffer'});
     }
+  
+   counter(){
+        var url = environment.serverUrl+"/appcount"
+        return this.http.get(url,{responseType: 'json'});
+    }
 }

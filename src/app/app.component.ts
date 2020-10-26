@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {BoilerPlate} from './shared/boilerplate.service'
 import { MatTabChangeEvent } from '@angular/material/tabs';
 import * as FileSaver from 'file-saver';
@@ -28,6 +28,15 @@ export class AppComponent {
     return /^([a-zA-Z]{1,20})$/.test(this.appName);
   }
   
+  ngOnInit() {
+    this.boilerplate.counter().subscribe(res =>{          
+     var somejson =  JSON.stringify(res);        
+     document.getElementById("dynamic_counter").innerHTML = JSON.parse(somejson).Count;      
+    },err =>{
+      console.log(err)
+    });     
+  }
+  
   explore(){
     var btn = document.getElementById("explore");
     btn.innerHTML = 'Preparing';   
@@ -45,6 +54,12 @@ export class AppComponent {
     };
     console.log(request)
     this.boilerplate.exploreBoilerPlate(request).subscribe(res =>{
+       this.boilerplate.counter().subscribe(res =>{          
+        var somejson =  JSON.stringify(res);        
+        document.getElementById("dynamic_counter").innerHTML = JSON.parse(somejson).Count;      
+       },err =>{
+         console.log(err)
+       });
       btn.innerHTML = 'Explore';
       var childWindow = window.open("https://codesandbox.io/embed/github/gophers-prop/"+this.appName);
     },err =>{
@@ -74,6 +89,12 @@ export class AppComponent {
     },err =>{
       console.log(err)
     });
+    this.boilerplate.counter().subscribe(res =>{          
+        var somejson =  JSON.stringify(res);        
+        document.getElementById("dynamic_counter").innerHTML = JSON.parse(somejson).Count;      
+       },err =>{
+         console.log(err)
+     });
   }
   setSelectedAppTypeTab(changeTab: number) : void {
     this.selectedAppTypeIndex = changeTab

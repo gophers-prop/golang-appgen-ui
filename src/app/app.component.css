@@ -56,6 +56,12 @@
     right: 2%;
   }
 
+  .totalapps {
+    position: fixed;
+    bottom: 5%;
+    right: 40%;
+  }
+
   .side{
      
      padding-left: 60%;
