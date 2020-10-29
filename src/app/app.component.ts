@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import * as FileSaver from 'file-saver';
 import {AppService} from './app-service';
 import {AppConstants} from './common/constants/app-constants';
+import {CodeGenerateRequest} from "./common/modal/code-generate-request";
 
 @Component({
   selector: 'app-root',
@@ -47,19 +48,17 @@ export class AppComponent implements OnInit {
     });
   }
 
-  getCodeGeneratorRequest(): any {
+  getCodeGeneratorRequest(): CodeGenerateRequest {
     let logFrameWork = ""
     for (let i = 0; i < this.logFrameworkChecked.length; i++) {
       if (this.logFrameworkChecked[i] == true) {
         logFrameWork = this.loggingFrameworks[i]
       }
     }
-    return {
-      "appType": this.appType[this.selectedAppTypeIndex],
-      "library": this.libraries[this.selectedAppTypeIndex][this.selectedLibraryIndex],
-      "appName": this.appName,
-      "loggingframework": logFrameWork
-    };
+    return new CodeGenerateRequest(this.appType[this.selectedAppTypeIndex],
+      this.libraries[this.selectedAppTypeIndex][this.selectedLibraryIndex],
+      this.appName,
+      logFrameWork);
   }
 
 
