@@ -9,7 +9,7 @@ export class HttpService {
 
   get(path: string, option?: any) {
     const options = option ? option : {};
-    return this.httpClient.get(`/${path}`, options)
+    return this.httpClient.get(path, options)
       .pipe(
         map(res => {
           return res;
@@ -19,7 +19,7 @@ export class HttpService {
 
   post(path: string, request?: any, option?: any) {
     const options = option ? option : {};
-    return this.httpClient.post(`/${path}`, request ? request : {}, options)
+    return this.httpClient.post(path, request ? request : {}, options)
       .pipe(
         map(res => {
           return res;
