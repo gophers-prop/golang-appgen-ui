@@ -17,11 +17,13 @@ export class AppComponent {
   appType = ["cli","webservice","webclient"]
   libraries = [
     ["spf13/cobra","urfave/cli","alecthomas/kingpin"],
-    ["gin-gonic/gin","go-martini/martini","goji/goji"],
+    ["goji-1","ginrest","martini"],
     ["net/http","go-resty/resty","jcmturner/restclient"]
   ]
   loggingFrameworks = ["golang/glog","sirupsen/logrus"]
+  databaseFrameworks = ["mysql"]
   logFrameworkChecked = [false,false]
+  databaseFrameworkChecked = [false]
   constructor(private boilerplate:BoilerPlate){}
   
 
@@ -30,14 +32,36 @@ export class AppComponent {
     for(let i=0;i<this.logFrameworkChecked.length;i++){
       if(this.logFrameworkChecked[i] ==true){
         logframework = this.loggingFrameworks[i]
+        break;
       }
     } 
+    var databaseFramework = ""
+    for(let i=0;i<this.databaseFrameworkChecked.length;i++){
+      if(this.databaseFrameworkChecked[i] ==true){
+        databaseFramework = this.databaseFrameworks[i]
+      }
+    } 
+    var functionalities = [];
+    if (logframework != ""){
+      functionalities.push({
+        "name":"logging",
+        "library":logframework
+      })
+    }
+    if (databaseFramework != ""){
+      functionalities.push({
+        "name":"database",
+        "library":databaseFramework
+      })
+    }
+    
+    
     var request ={
       "appType": this.appType[this.selectedAppTypeIndex],
       "library" : this.libraries[this.selectedAppTypeIndex][this.selectedLibraryIndex],
       "appName" : this.appName,
-      "loggingframework" : logframework
-    };
+      "functionalities":  functionalities};
+
     console.log(request)
     this.boilerplate.getBoilerPlate(request).subscribe(res =>{
       this.downloadFile(res);
@@ -69,6 +93,13 @@ export class AppComponent {
     for(let i=0;i<this.logFrameworkChecked.length;i++){
       if (i == index )continue;
         this.logFrameworkChecked[i] = false
+      } 
+  }
+  setDatabaseFramework(event,index){
+    this.databaseFrameworkChecked[index] = event.checked
+    for(let i=0;i<this.databaseFrameworkChecked.length;i++){
+      if (i == index )continue;
+        this.databaseFrameworkChecked[i] = false
       } 
   }
 }

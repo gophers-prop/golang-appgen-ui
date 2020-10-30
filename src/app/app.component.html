@@ -28,6 +28,8 @@
         <mat-divider style="margin-top:0em;"></mat-divider>
         <mat-list-item class="chip2"> Logging Packages </mat-list-item>
         <mat-divider style="margin-top:0em;"></mat-divider>
+        <mat-list-item class="chip3"> Database Library </mat-list-item>
+        <mat-divider style="margin-top:0em;"></mat-divider>
         <mat-list-item class="chip3"> App Name </mat-list-item>
         <mat-divider></mat-divider>
       </mat-list>
@@ -60,6 +62,9 @@
         <div  style="margin-top: 40px;">
           <mat-checkbox color="primary" style="padding-right: 30px;" *ngFor="let logPackageName of loggingFrameworks;let index = index"  [checked]="logFrameworkChecked[index]" (change)="setLoggingFramework($event,index)">{{logPackageName}}</mat-checkbox>
           </div>
+          <div  style="margin-top: 40px;">
+            <mat-checkbox color="primary" style="padding-right: 30px;" *ngFor="let databaseLibrary of databaseFrameworks;let index = index"  [checked]="databaseFrameworkChecked[index]" (change)="setDatabaseFramework($event,index)">{{databaseLibrary}}</mat-checkbox>
+            </div>
         <div style="margin-top: 20px;">
           <mat-form-field>
             <input matInput placeholder="App name" [(ngModel)]="appName" required minlength="4">

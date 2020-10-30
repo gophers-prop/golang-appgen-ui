@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  serverUrl : "http://golangapps.com:9090"
+  serverUrl : "http://localhost:8080"
 };
 
 /*
