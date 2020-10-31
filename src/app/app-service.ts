@@ -1,6 +1,5 @@
-import {Injectable} from "@angular/core";
-import {HttpService} from "./common/http-service/http.service";
-import {environment} from "../environments/environment";
+import {Injectable} from '@angular/core';
+import {HttpService} from './common/http-service/http.service';
 
 
 @Injectable()
@@ -15,17 +14,14 @@ export class AppService {
   private static readonly APP_COUNT_URL = 'app-count';
 
   getBoilerPlate(request) {
-    const url = environment.serverUrl + AppService.SIMPLE_APP_URL;
-    return this.httpService.post(url, request, {responseType: 'arraybuffer'});
+    return this.httpService.post(AppService.SIMPLE_APP_URL, request, {responseType: 'arraybuffer'});
   }
 
   exploreBoilerPlate(request) {
-    const url = environment.serverUrl + AppService.EXPLORE_APP_URL;
-    return this.httpService.post(url, request, {responseType: 'arraybuffer'});
+    return this.httpService.post(AppService.EXPLORE_APP_URL, request, {responseType: 'arraybuffer'});
   }
 
   counter() {
-    const url = environment.serverUrl + AppService.APP_COUNT_URL;
-    return this.httpService.get(url, {responseType: 'json'});
+    return this.httpService.get(AppService.APP_COUNT_URL, {responseType: 'json'});
   }
 }

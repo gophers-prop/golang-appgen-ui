@@ -1,6 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {MatIconModule} from '@angular/material/icon'
+import {MatIconModule} from '@angular/material/icon';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -18,8 +18,8 @@ import {MatListModule} from '@angular/material/list';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import {MatCheckboxModule} from '@angular/material/checkbox';
-import {HttpService} from "./common/http-service/http.service";
-import {AppService} from "./app-service";
+import {HttpService} from './common/http-service/http.service';
+import {AppService} from './app-service';
 
 
 @NgModule({
