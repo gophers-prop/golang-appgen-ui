@@ -1,18 +1,21 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import * as FileSaver from 'file-saver';
-import {AppService} from "./app-service";
+import {AppService} from './app-service';
+import {AppConstants} from './common/constants/app-constants';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'Golang AppGen';
+export class AppComponent implements OnInit {
+  title: string;
   selectedAppTypeIndex = 0;
   selectedLibraryIndex = 0;
+  totalApplicationDownloads = 0;
+  exploreButtonText: string;
   activeLibrary = ["spf13/cobra", "urfave/cli", "alecthomas/kingpin"]
-  appName = "";
+  appName: string;
 
   appType = ["cli", "webservice", "webclient"]
   libraries = [
@@ -31,72 +34,53 @@ export class AppComponent {
   }
 
   ngOnInit() {
+    this.exploreButtonText = AppConstants.EXPLORE_DEFAULT_BUTTON_TEXT;
+    this.title = AppConstants.APPLICATION_TITLE;
+    this.setApplicationDownloadCount();
+  }
+
+  setApplicationDownloadCount(): void {
     this.appService.counter().subscribe(res => {
-      var somejson = JSON.stringify(res);
-      document.getElementById("dynamic_counter").innerHTML = JSON.parse(somejson).Count;
+      this.totalApplicationDownloads = JSON.parse(JSON.stringify(res)).Count;
     }, err => {
       console.log(err)
     });
   }
 
-  explore() {
-    var btn = document.getElementById("explore");
-    btn.innerHTML = 'Preparing';
-    var logframework = ""
+  getCodeGeneratorRequest(): any {
+    let logFrameWork = ""
     for (let i = 0; i < this.logFrameworkChecked.length; i++) {
       if (this.logFrameworkChecked[i] == true) {
-        logframework = this.loggingFrameworks[i]
+        logFrameWork = this.loggingFrameworks[i]
       }
     }
-    var request = {
+    return {
       "appType": this.appType[this.selectedAppTypeIndex],
       "library": this.libraries[this.selectedAppTypeIndex][this.selectedLibraryIndex],
       "appName": this.appName,
-      "loggingframework": logframework
+      "loggingframework": logFrameWork
     };
-    console.log(request)
-    this.appService.exploreBoilerPlate(request).subscribe(res => {
-      this.appService.counter().subscribe(res => {
-        var somejson = JSON.stringify(res);
-        document.getElementById("dynamic_counter").innerHTML = JSON.parse(somejson).Count;
-      }, err => {
-        console.log(err)
-      });
-      btn.innerHTML = 'Explore';
-      var childWindow = window.open("https://codesandbox.io/embed/github/gophers-prop/" + this.appName);
+  }
+
+
+  explore() {
+    this.exploreButtonText = AppConstants.PREPARING_BUTTON_TEXT;
+    this.appService.exploreBoilerPlate(this.getCodeGeneratorRequest()).subscribe(() => {
+      this.setApplicationDownloadCount();
+      this.exploreButtonText = AppConstants.EXPLORE_DEFAULT_BUTTON_TEXT;
+      window.open(AppConstants.CODE_SAND_BOX_URL + this.appName);
     }, err => {
       console.log(err)
     });
-
-
-    //use 's' instead of embed for full sandbox
   }
 
   getBoilerPlate() {
-    var logframework = ""
-    for (let i = 0; i < this.logFrameworkChecked.length; i++) {
-      if (this.logFrameworkChecked[i] == true) {
-        logframework = this.loggingFrameworks[i]
-      }
-    }
-    var request = {
-      "appType": this.appType[this.selectedAppTypeIndex],
-      "library": this.libraries[this.selectedAppTypeIndex][this.selectedLibraryIndex],
-      "appName": this.appName,
-      "loggingframework": logframework
-    };
-    console.log(request)
-    this.appService.getBoilerPlate(request).subscribe(res => {
+    this.appService.getBoilerPlate(this.getCodeGeneratorRequest()).subscribe(res => {
       this.downloadFile(res);
     }, err => {
       console.log(err)
     });
-    this.appService.counter().subscribe(res => {
-      var somejson = JSON.stringify(res);
-      document.getElementById("dynamic_counter").innerHTML = JSON.parse(somejson).Count;
-    }, err => {
-      console.log(err)
-    });
+    this.setApplicationDownloadCount();
   }
 
   setSelectedAppTypeTab(changeTab: number): void {
@@ -110,22 +94,22 @@ export class AppComponent {
   }
 
   downloadFile(response) {
-    console.log(response)
     const blob = new Blob([response], {type: 'application/zip'});
     FileSaver.saveAs(blob, this.appName + ".zip");
   }
 
   reset() {
-    this.selectedAppTypeIndex = 0
-    this.selectedLibraryIndex = 0
-    this.appName = ""
+    this.selectedAppTypeIndex = 0;
+    this.selectedLibraryIndex = 0;
+    this.appName = "";
+    this.exploreButtonText = AppConstants.EXPLORE_DEFAULT_BUTTON_TEXT;
   }
 
   setLoggingFramework(event, index) {
-    this.logFrameworkChecked[index] = event.checked
+    this.logFrameworkChecked[index] = event.checked;
     for (let i = 0; i < this.logFrameworkChecked.length; i++) {
       if (i == index) continue;
-      this.logFrameworkChecked[i] = false
+      this.logFrameworkChecked[i] = false;
     }
   }
 }

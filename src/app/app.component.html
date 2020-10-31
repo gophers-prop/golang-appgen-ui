@@ -44,17 +44,17 @@
               <mat-tab-group [selectedIndex]="selectedLibraryIndex"
                 (selectedIndexChange)="setSelectedLibraryTab($event)" dynamicHeight="true">
                 <mat-tab *ngFor="let library of activeLibrary; let index = index" [label]="library"></mat-tab>
-                
+
               </mat-tab-group>
-              
-            
+
+
               <!-- <div class="libraryInput">
                 <mat-form-field>
                   <input matInput placeholder="Search library" [disabled]="true">
                 </mat-form-field>
               </div> -->
             </div>
-            
+
           </mat-tab>
         </mat-tab-group>
         <div  style="margin-top: 40px;">
@@ -67,12 +67,12 @@
         </div>
         <div style="margin-top: 5%;">
           <button mat-raised-button class="downloadbutton" id="download" color="primary" [disabled]=!isValidAppName() (click)="getBoilerPlate()">Download</button>
-          <button mat-raised-button class="explorebutton" id="explore" [disabled]=!isValidAppName() (click)="explore()">Explore</button>
+          <button mat-raised-button class="explorebutton" id="explore" [disabled]=!isValidAppName() (click)="explore()">{{exploreButtonText}}</button>
           <button mat-raised-button class="resetbutton" (click)="reset()">Reset</button>
           <button class="likeus" mat-fab aria-label="Example icon-button with a heart icon">
             <mat-icon>favorite</mat-icon>
           </button>
-           <tr class="totalapps"> Total Generated Applications : <label id="dynamic_counter"></label></tr>
+           <tr class="totalapps"> Total Generated Applications : {{totalApplicationDownloads}}</tr>
         </div>
       </div>
     </div>
