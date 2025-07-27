@@ -34,7 +34,7 @@ export function GoVersionStep({ formData, updateFormData, onNext, isValid }: Ste
               <p className="text-sm text-slate-600 mb-4">{version.description}</p>
               <div className="text-xs text-slate-500 flex items-center">
                 <Calendar className="w-3 h-3 mr-1" />
-                {version.date}
+                {version.released}
               </div>
             </Card>
           ))}

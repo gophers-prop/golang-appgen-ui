@@ -37,6 +37,10 @@ export interface GoVersion {
   released: string;
   supported: boolean;
   lts?: boolean;
+  description: string;
+  badge?: string;
+  badgeColor?: string;
+  
 }
 
 export interface AppType {
@@ -81,10 +85,18 @@ export interface StatsResponse {
 
 // Go Versions Data
 export const GO_VERSIONS: GoVersion[] = [
-  { version: "1.22", label: "Go 1.22", released: "Feb 2024", supported: true, lts: true },
-  { version: "1.21", label: "Go 1.21", released: "Aug 2023", supported: true },
-  { version: "1.20", label: "Go 1.20", released: "Feb 2023", supported: true },
-  { version: "1.19", label: "Go 1.19", released: "Aug 2022", supported: false },
+  { version: "1.22", label: "Go 1.22", released: "Feb 2024", supported: true, lts: true, description: "Latest",
+    badge: "Popular",
+    badgeColor: "bg-green-100 text-green-800" },
+  { version: "1.21", label: "Go 1.21", released: "Aug 2023", supported: true, description: "Stable",
+    badge: "Popular",
+    badgeColor: "bg-green-100 text-green-800" },
+  { version: "1.20", label: "Go 1.20", released: "Feb 2023", supported: true, description: "Supported",
+    badge: "Popular",
+    badgeColor: "bg-green-100 text-green-800" },
+  { version: "1.19", label: "Go 1.19", released: "Aug 2022", supported: false, description: "not Supported",
+    badge: "Popular",
+    badgeColor: "bg-green-100 text-green-800" },
 ];
 
 // Application Types Data

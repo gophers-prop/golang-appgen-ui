@@ -1,15 +1,15 @@
 import { useState } from "react";
 import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+//import { Badge } from "@/components/ui/badge";
 import { SiGo } from "react-icons/si";
 import { Github, HelpCircle, BarChart3 } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { ProgressIndicator } from "@/components/progress-indicator";
 import { GoVersionStep } from "@/components/go-version-step";
 import { AppTypeStep } from "@/components/app-type-step";
-import { FrameworksStep } from "@/components/frameworks-step";
-import { AdvancedSettingsStep } from "@/components/advanced-settings-step";
-import { ConfigurationStep } from "@/components/configuration-step";
+//import { FrameworksStep } from "@/components/frameworks-step";
+//import { AdvancedSettingsStep } from "@/components/advanced-settings-step";
+//import { ConfigurationStep } from "@/components/configuration-step";
 import { ProjectDetailsStep } from "@/components/project-details-step";
 import type { FormState } from "@/lib/types";
 
@@ -67,7 +67,7 @@ export default function Home() {
   };
   const isStep4Valid = () => true; // Advanced settings are optional
   const isStep5Valid = () => true; // Configuration step is always valid
-  const isStep6Valid = () => Boolean(formData.projectName && formData.packageName);
+  const isStep6Valid = () => Boolean(formData.projectName );//&& formData.packageName
 
   const getCurrentStepValidation = () => {
     switch (currentStep) {

@@ -1,16 +1,16 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+//import { Textarea } from "@/components/ui/textarea";
+//import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
 import { ArrowLeft, Download } from "lucide-react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
-import type { StepProps, GenerateResponse } from "@/lib/types";
+//import type { StepProps, GenerateResponse } from "@/lib/types";
 
-export function ProjectDetailsStep({ formData, updateFormData, onPrev, isValid }: StepProps) {
+export function ProjectDetailsStep({ formData, updateFormData, onPrev, isValid }) {
   const { toast } = useToast();
   const queryClient = useQueryClient();
 
@@ -67,11 +67,11 @@ const generateMutation = useMutation({
     generateMutation.mutate(formData);
   };
 
-  const getDockerSummary = () => {
+  /*const getDockerSummary = () => {
     if (formData.docker && formData.compose) return "Docker + Compose";
     if (formData.docker) return "Docker only";
     return "Disabled";
-  };
+  };*/
 
   const getFrameworkSummary = () => {
     if (formData.appType !== "web") return "N/A";
@@ -107,56 +107,11 @@ const generateMutation = useMutation({
             <p className="text-xs text-slate-500 mt-1">Used for module name and directory</p>
           </div>
 
-          <div>
-            <Label htmlFor="package-name">Package Name *</Label>
-            <Input
-              id="package-name"
-              value={formData.packageName}
-              onChange={(e) => updateFormData({ packageName: e.target.value })}
-              placeholder="github.com/username/my-go-app"
-              className="mt-2"
-            />
-            <p className="text-xs text-slate-500 mt-1">Go module path</p>
-          </div>
+   
+         
 
-          <div className="md:col-span-2">
-            <Label htmlFor="description">Description</Label>
-            <Textarea
-              id="description"
-              value={formData.description}
-              onChange={(e) => updateFormData({ description: e.target.value })}
-              placeholder="A brief description of your Go application"
-              rows={3}
-              className="mt-2"
-            />
-          </div>
+        
 
-          <div>
-            <Label htmlFor="author">Author</Label>
-            <Input
-              id="author"
-              value={formData.author}
-              onChange={(e) => updateFormData({ author: e.target.value })}
-              placeholder="Your Name"
-              className="mt-2"
-            />
-          </div>
-
-          <div>
-            <Label htmlFor="license">License</Label>
-            <Select value={formData.license} onValueChange={(value) => updateFormData({ license: value })}>
-              <SelectTrigger className="mt-2">
-                <SelectValue placeholder="Select license" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="none">No License</SelectItem>
-                <SelectItem value="MIT">MIT License</SelectItem>
-                <SelectItem value="Apache-2.0">Apache License 2.0</SelectItem>
-                <SelectItem value="GPL-3.0">GNU GPL v3</SelectItem>
-                <SelectItem value="BSD-3-Clause">BSD 3-Clause</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
         </div>
 
         {/* Configuration Summary */}
@@ -184,7 +139,7 @@ const generateMutation = useMutation({
             <div>
               <span className="text-slate-600">Docker:</span>
               <span className="font-medium text-slate-900 ml-2">
-                {getDockerSummary()}
+                {/*getDockerSummary()*/}
               </span>
             </div>
           </div>
