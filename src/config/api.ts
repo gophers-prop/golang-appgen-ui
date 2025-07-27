@@ -4,13 +4,13 @@
 export const API_CONFIG = {
   // Your backend API base URL
   //baseUrl: process.env.VITE_API_URL || 'http://localhost:5000',
-  //baseUrl: 'http://3.80.93.144:8080',
-  baseUrl: 'https://literate-chainsaw-4qjw6gwj6q9f7xp6-8080.app.github.dev',
+  baseUrl: 'http://3.80.93.144:80',
+  //baseUrl: 'https://literate-chainsaw-4qjw6gwj6q9f7xp6-8080.app.github.dev',
   // API endpoints that your backend should implement
   endpoints: {
-    generate: '/generate',//api/
+    generate: '/api/generate',//api/
     download: '/api/download',
-    stats: '/app-count',
+    stats: '/api/app-count',
   },
   
   // Request timeout in milliseconds

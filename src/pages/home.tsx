@@ -37,7 +37,7 @@ export default function Home() {
 
   // Fetch total generated count
   const { data: stats } = useQuery<{ totalGenerated: number }>({
-    queryKey: ['/app-count'],
+    queryKey: ['/api/app-count'],
     refetchInterval: 30000, // Refetch every 30 seconds
   });
 

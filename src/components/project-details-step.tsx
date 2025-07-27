@@ -16,7 +16,7 @@ export function ProjectDetailsStep({ formData, updateFormData, onPrev, isValid }
 
 const generateMutation = useMutation({
   mutationFn: async (data: typeof formData) => {
-    const response = await apiRequest("POST", "/generate", data);
+    const response = await apiRequest("POST", "/api/generate", data);
 
     if (!response.ok) {
       const errorText = await response.text(); // In case API sends text error
@@ -39,7 +39,7 @@ const generateMutation = useMutation({
       link.remove();
 
       // Invalidate stats to update the counter
-      queryClient.invalidateQueries({ queryKey: ['/app-count'] });
+      queryClient.invalidateQueries({ queryKey: ['/api/app-count'] });
 
       toast({
         title: "Project Generated Successfully!",
