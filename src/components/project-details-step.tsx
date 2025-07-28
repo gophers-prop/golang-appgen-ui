@@ -74,7 +74,7 @@ const generateMutation = useMutation({
   };*/
 
   const getFrameworkSummary = () => {
-    if (formData.appType !== "web") return "N/A";
+    //if (formData.appType !== "web") return "N/A";
     const framework = formData.framework;
     switch (framework) {
       case "gin": return "Gin";
@@ -82,7 +82,7 @@ const generateMutation = useMutation({
       case "fiber": return "Fiber";
       case "gorilla": return "Gorilla Mux";
       case "none": return "Standard Library";
-      default: return "Not selected";
+      default: return framework;
     }
   };
 
@@ -107,6 +107,17 @@ const generateMutation = useMutation({
             <p className="text-xs text-slate-500 mt-1">Used for module name and directory</p>
           </div>
 
+       <div>
+            <Label htmlFor="package-name">Module Name *</Label>
+            <Input
+              id="package-name"
+              value={formData.moduleName}
+              onChange={(e) => updateFormData({ moduleName: e.target.value })}
+              placeholder="github.com/username/my-go-app"
+              className="mt-2"
+            />
+            <p className="text-xs text-slate-500 mt-1">Go module path</p>
+          </div>
    
          
 
@@ -136,12 +147,7 @@ const generateMutation = useMutation({
                 {getFrameworkSummary()}
               </span>
             </div>
-            <div>
-              <span className="text-slate-600">Docker:</span>
-              <span className="font-medium text-slate-900 ml-2">
-                {/*getDockerSummary()*/}
-              </span>
-            </div>
+            
           </div>
         </Card>
 

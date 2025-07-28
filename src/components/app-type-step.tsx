@@ -45,7 +45,7 @@ export function AppTypeStep({ formData, updateFormData, onNext, onPrev, isValid 
                             ? "border-blue-500 bg-blue-50"
                             : "border-slate-200"
                         )}
-                        onClick={() => updateFormData({ appType: type.type })}
+                        onClick={() => updateFormData({ appType: type.type,framework: "" })}
                       >
                         <div className="flex items-center">
                           <div className={cn("w-10 h-10 rounded-lg flex items-center justify-center mr-3 text-lg", type.iconColor)}>
@@ -69,36 +69,38 @@ export function AppTypeStep({ formData, updateFormData, onNext, onPrev, isValid 
             <h3 className="text-lg font-semibold text-slate-900 mb-4">
               Framework <span className="text-sm font-normal text-slate-500">(for Selected Application Type)</span>
             </h3>
-            <div className="space-y-3">
-              {FRAMEWORKS.map((framework) => (
-                <Card
-                  key={framework.framework}
-                  className={cn(
-                    "p-4 cursor-pointer hover:border-blue-500 transition-all duration-200 border-2",
-                    !isWebApp && "opacity-50 cursor-not-allowed",
-                    formData.framework === framework.framework && isWebApp
-                      ? "border-blue-500 bg-blue-50"
-                      : "border-slate-200"
-                  )}
-                  onClick={() => isWebApp && updateFormData({ framework: framework.framework })}
-                >
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center">
-                      <div className={cn("w-10 h-10 rounded-lg flex items-center justify-center mr-3 text-lg", framework.iconColor)}>
-                        {framework.icon}
-                      </div>
-                      <div>
-                        <h4 className="font-medium text-slate-900">{framework.label}</h4>
-                        <p className="text-xs text-slate-600">{framework.description}</p>
-                      </div>
-                    </div>
-                    {framework.badge && (
-                      <Badge className={framework.badgeColor}>{framework.badge}</Badge>
-                    )}
-                  </div>
-                </Card>
-              ))}
+           <div className="space-y-3">
+  {FRAMEWORKS
+    .filter(fw => fw.appTypes.includes(formData.appType))
+    .map((framework) => (
+      <Card
+        key={framework.framework}
+        className={cn(
+          "p-4 cursor-pointer hover:border-blue-500 transition-all duration-200 border-2",
+          formData.framework === framework.framework
+            ? "border-blue-500 bg-blue-50"
+            : "border-slate-200"
+        )}
+        onClick={() => updateFormData({ framework: framework.framework })}
+      >
+        <div className="flex items-center justify-between">
+          <div className="flex items-center">
+            <div className={cn("w-10 h-10 rounded-lg flex items-center justify-center mr-3 text-lg", framework.iconColor)}>
+              {framework.icon}
             </div>
+            <div>
+              <h4 className="font-medium text-slate-900">{framework.label}</h4>
+              <p className="text-xs text-slate-600">{framework.description}</p>
+            </div>
+          </div>
+          {framework.badge && (
+            <Badge className={framework.badgeColor}>{framework.badge}</Badge>
+          )}
+        </div>
+      </Card>
+  ))}
+</div>
+
           </div>
         </div>
 

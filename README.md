@@ -54,7 +54,7 @@ Generate a Go project and return download URL.
   baseImage: string;
   dependencies: string[];
   projectName: string;
-  packageName: string;
+  moduleName: string;
   description: string;
   author: string;
   license: string;

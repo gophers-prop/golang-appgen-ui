@@ -52,7 +52,7 @@ Your existing backend needs these endpoints:
   "baseImage": "alpine",
   "dependencies": ["gorm", "viper"],
   "projectName": "my-go-app",
-  "packageName": "github.com/user/my-go-app",
+  "moduleName": "github.com/user/my-go-app",
   "description": "A sample Go application",
   "author": "Developer Name",
   "license": "MIT"

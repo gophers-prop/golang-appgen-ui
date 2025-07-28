@@ -24,12 +24,13 @@ export default function Home() {
     appType: "",
     framework: "",
     projectName: "",
+    moduleName: "",
    /* docker: false,
     compose: false,
     baseImage: "alpine",
     dependencies: [],
     projectName: "",
-    packageName: "",
+    
     description: "",
     author: "",
     license: "none",*/
@@ -67,7 +68,7 @@ export default function Home() {
   };
   const isStep4Valid = () => true; // Advanced settings are optional
   const isStep5Valid = () => true; // Configuration step is always valid
-  const isStep6Valid = () => Boolean(formData.projectName );//&& formData.packageName
+  const isStep6Valid = () => Boolean(formData.projectName );//&& formData.moduleName
 
   const getCurrentStepValidation = () => {
     switch (currentStep) {

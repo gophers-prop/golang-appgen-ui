@@ -5,12 +5,13 @@ export interface FormState {
   appType: string;
   framework?: string;
   projectName: string;
+  packageName: string;
  /* docker: boolean;
   compose: boolean;
   baseImage: string;
   dependencies: string[];
   projectName: string;
-  packageName: string;
+  
   description: string;
   author: string;
   license: string;
@@ -62,6 +63,7 @@ export interface Framework {
   iconColor: string;
   badge?: string;
   badgeColor?: string;
+  appTypes: string[];
 }
 
 export interface Dependency {
@@ -85,18 +87,16 @@ export interface StatsResponse {
 
 // Go Versions Data
 export const GO_VERSIONS: GoVersion[] = [
-  { version: "1.22", label: "Go 1.22", released: "Feb 2024", supported: true, lts: true, description: "Latest",
-    badge: "Popular",
+  { version: "1.24", label: "Go 1.24", released: "Feb 2025", supported: true, lts: true, description: "",
+    badge: "Latest",
     badgeColor: "bg-green-100 text-green-800" },
-  { version: "1.21", label: "Go 1.21", released: "Aug 2023", supported: true, description: "Stable",
-    badge: "Popular",
+  { version: "1.23", label: "Go 1.23", released: "Aug 2024", supported: true, description: "",
+    badge: "Stable",
     badgeColor: "bg-green-100 text-green-800" },
-  { version: "1.20", label: "Go 1.20", released: "Feb 2023", supported: true, description: "Supported",
-    badge: "Popular",
+  { version: "1.22", label: "Go 1.22", released: "Feb 2024", supported: true, description: "",
+    badge: "Supported",
     badgeColor: "bg-green-100 text-green-800" },
-  { version: "1.19", label: "Go 1.19", released: "Aug 2022", supported: false, description: "not Supported",
-    badge: "Popular",
-    badgeColor: "bg-green-100 text-green-800" },
+
 ];
 
 // Application Types Data
@@ -129,7 +129,8 @@ export const APP_TYPES: AppType[] = [
     iconColor: "bg-gray-100 text-gray-600",
     category: "CLI",
     badge: "Popular",
-    badgeColor: "bg-gray-100 text-gray-800"
+    badgeColor: "bg-gray-100 text-gray-800",
+    
   },
  /* {
     type: "microservice",
@@ -230,34 +231,74 @@ export const FRAMEWORKS: Framework[] = [
     icon: "🍸",
     iconColor: "bg-green-100 text-green-600",
     badge: "Popular",
-    badgeColor: "bg-green-100 text-green-800"
+    badgeColor: "bg-green-100 text-green-800",
+    appTypes: ["webservice"]
   },
-  {
-    framework: "martini",
-    label: "Martini",
-    description: "High performance, minimalist framework",
-    icon: "📢",
-    iconColor: "bg-blue-100 text-blue-600",
-    badge: "Fast",
-    badgeColor: "bg-blue-100 text-blue-800"
-  },
-  {
-    framework: "goji",
-    label: "Goji",
-    description: "Express-inspired web framework",
-    icon: "🕸️",
-    iconColor: "bg-purple-100 text-purple-600",
-    badge: "Express-like",
-    badgeColor: "bg-purple-100 text-purple-800"
-  },
-  /*{
-    framework: "gorilla",
+   {
+    framework: "gorilla/mux",
     label: "Gorilla Mux",
     description: "Powerful HTTP router and URL matcher",
     icon: "🦍",
-    iconColor: "bg-gray-100 text-gray-600"
+    iconColor: "bg-gray-100 text-gray-600",
+    badge: "Powerful",
+    badgeColor: "bg-yellow-100 text-yellow-800",
+    appTypes: ["webservice"]
   },
   {
+    framework: "go-martini/martini",
+    label: "Martini",
+    description: "Classy web framework",
+    icon: "📢",
+    iconColor: "bg-blue-100 text-blue-600",
+    badge: "Classy",
+    badgeColor: "bg-blue-100 text-blue-800",
+    appTypes: ["webservice"]
+  },
+  {
+    framework: "goji/goji",
+    label: "Goji",
+    description: "Minimalistic and flexible framework",
+    icon: "🕸️",
+    iconColor: "bg-purple-100 text-purple-600",
+    badge: "Minimul",
+    badgeColor: "bg-purple-100 text-purple-800",
+    appTypes: ["webservice"]
+  },
+
+  // CLI Frameworks
+
+  {
+    framework: "spf13/cobra",
+    label: "Cobra",
+    description: "Modern CLI framework",
+    icon: "🍸",
+    iconColor: "bg-green-100 text-green-600",
+    badge: "Modern",
+    badgeColor: "bg-green-100 text-green-800",
+    appTypes: ["cli"]
+  },
+   {
+    framework: "alecthomas/kingpin",
+    label: "Kingpin",
+    description: "Powerful HTTP router and URL matcher",
+    icon: "🦍",
+    iconColor: "bg-gray-100 text-gray-600",
+    badge: "Powerful",
+    badgeColor: "bg-yellow-100 text-yellow-800",
+    appTypes: ["cli"]
+  },
+  {
+    framework: "urfave/cli",
+    label: "Urfave CLI",
+    description: "A declarative, simple, fast",
+    icon: "📢",
+    iconColor: "bg-blue-100 text-blue-600",
+    badge: "Fast",
+    badgeColor: "bg-blue-100 text-blue-800",
+    appTypes: ["cli"]
+  },
+
+   /*{
     framework: "none",
     label: "Standard Library",
     description: "Built-in net/http package",

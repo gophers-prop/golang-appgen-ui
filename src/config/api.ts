@@ -23,13 +23,14 @@ export interface GenerateRequest {
   appType: string;
   framework: string;
   projectName: string;
+  packageName: string;
  /*
   docker: boolean;
   compose: boolean;
   baseImage: string;
   dependencies: string[];
   projectName: string;
-  packageName: string;
+  
   description: string;
   author: string;
   license: string;
