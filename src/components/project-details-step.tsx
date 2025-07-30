@@ -28,6 +28,8 @@ const generateMutation = useMutation({
     return { success: true, downloadUrl };
   },
 
+  
+
   onSuccess: (data) => {
     if (data.success && data.downloadUrl) {
       // Trigger file download
@@ -66,6 +68,41 @@ const generateMutation = useMutation({
   const handleGenerate = () => {
     generateMutation.mutate(formData);
   };
+/*
+const handleExplore = () => {
+  const githubRepoUrl = "https://github.dev/gophers-prop/"+ formData.projectName; // Replace with your actual repo
+  window.open(githubRepoUrl, "_blank", "noopener,noreferrer");
+};*/
+
+const handleExplore = async () => {
+  try {
+    const response = await apiRequest("POST", "/api/explore-app", formData);
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(errorText || "Failed to prepare GitHub repo.");
+    }
+
+    const { githubRepoUrl } = await response.json(); // expects server to return { githubRepoUrl: "https://github.dev/..." }
+
+    if (githubRepoUrl) {
+      window.open(githubRepoUrl, "_blank", "noopener,noreferrer");
+    } else {
+      toast({
+        title: "Explore Failed",
+        description: "No GitHub repo URL returned",
+        variant: "destructive",
+      });
+    }
+  } catch (error) {
+    toast({
+      title: "Explore Failed",
+      description: error.message || "Something went wrong",
+      variant: "destructive",
+    });
+  }
+};
+
 
   /*const getDockerSummary = () => {
     if (formData.docker && formData.compose) return "Docker + Compose";
@@ -170,7 +207,21 @@ const generateMutation = useMutation({
             ) : (
               <>
                 <Download className="mr-2 w-4 h-4" />
-                Generate & Download
+                Download
+              </>
+            )}
+          </Button>
+               <Button 
+            onClick={handleExplore}
+            disabled={!isValid || generateMutation.isPending}
+            className="bg-emerald-500 hover:bg-emerald-600 px-8 py-3"
+          >
+            {generateMutation.isPending ? (
+              <>Generating...</>
+            ) : (
+              <>
+                <Download className="mr-2 w-4 h-4" />
+                Explore
               </>
             )}
           </Button>

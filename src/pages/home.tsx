@@ -18,6 +18,7 @@ import type { FormState } from "@/lib/types";
 const TOTAL_STEPS = 3;
 
 export default function Home() {
+  const [helpOpen, setHelpOpen] = useState(false);
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState<FormState>({
     goVersion: "",
@@ -101,8 +102,8 @@ export default function Home() {
                 <SiGo className="text-white text-xl" />
               </div>
               <div>
-                <h1 className="text-xl font-semibold text-slate-900">Go Initializer</h1>
-                <p className="text-sm text-slate-600">Generate Go applications with ease</p>
+                <h1 className="text-xl font-semibold text-slate-900">GoXper</h1>
+                <p className="text-sm text-slate-600">Build Go Apps With Platform Precision</p>
               </div>
             </div>
             <div className="flex items-center space-x-4">
@@ -115,13 +116,21 @@ export default function Home() {
                   <span className="text-xs text-emerald-600 ml-1">generated</span>
                 </div>
               )}
-              <button className="text-slate-600 hover:text-slate-900 transition-colors">
+             <a
+                href="https://github.com/gophers-prop/golang-appgen/blob/master/README.md"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-slate-600 hover:text-slate-900 transition-colors"
+              >
                 <Github className="w-5 h-5" />
-              </button>
-              <button className="text-slate-600 hover:text-slate-900 transition-colors">
+              </a>
+              <button
+                onClick={() => setHelpOpen(true)}
+                className="text-slate-600 hover:text-slate-900 transition-colors"
+              >
                 <HelpCircle className="w-5 h-5" />
               </button>
-            </div>
+                </div>
           </div>
         </div>
       </header>
@@ -137,6 +146,32 @@ export default function Home() {
           {currentStep === 3 && <ProjectDetailsStep {...stepProps} />}
         </Card>
       </main>
+      {helpOpen && (
+  <div className="fixed inset-0 z-50 bg-black bg-opacity-40 flex items-center justify-center">
+    <div className="bg-white rounded-xl p-6 w-full max-w-lg shadow-xl relative">
+      <button
+        className="absolute top-2 right-2 text-slate-500 hover:text-slate-700"
+        onClick={() => setHelpOpen(false)}
+      >
+        ✕
+      </button>
+      <h2 className="text-lg font-semibold text-slate-800 mb-4">Need Help?</h2>
+      <p className="text-slate-600 text-sm leading-relaxed">
+        This tool helps you scaffold Go applications with precise control over versioning, app type,
+        frameworks, and more. If you're stuck, visit our{" "}
+        <a
+          href="https://github.com/gophers-prop/golang-appgen/tree/master"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-600 underline"
+        >
+          GitHub Issues
+        </a>{" "}
+        page.
+      </p>
+    </div>
+  </div>
+)}
     </div>
   );
 }

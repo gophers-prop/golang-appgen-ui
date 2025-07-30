@@ -5,7 +5,7 @@ export interface FormState {
   appType: string;
   framework?: string;
   projectName: string;
-  packageName: string;
+  moduleName: string;
  /* docker: boolean;
   compose: boolean;
   baseImage: string;

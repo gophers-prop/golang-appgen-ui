@@ -7,9 +7,9 @@ import { APP_TYPES, FRAMEWORKS } from "@/lib/types";
 import type { StepProps } from "@/lib/types";
 
 export function AppTypeStep({ formData, updateFormData, onNext, onPrev, isValid }: StepProps) {
-  const isWebApp = formData.appType === "webservice" || formData.appType === "api-gateway" || 
-                   formData.appType === "graphql" || formData.appType === "websocket" || 
-                   formData.appType === "grpc";
+  //const isWebApp = formData.appType === "webservice" || formData.appType === "api-gateway" || 
+  //                 formData.appType === "graphql" || formData.appType === "websocket" || 
+  //                 formData.appType === "grpc";
 
   // Group application types by category
   const groupedTypes = APP_TYPES.reduce((acc, type) => {
