@@ -197,34 +197,40 @@ const handleExplore = async () => {
             <ArrowLeft className="mr-2 w-4 h-4" />
             Back
           </Button>
-          <Button 
-            onClick={handleGenerate}
-            disabled={!isValid || generateMutation.isPending}
-            className="bg-emerald-500 hover:bg-emerald-600 px-8 py-3"
-          >
-            {generateMutation.isPending ? (
-              <>Generating...</>
-            ) : (
-              <>
-                <Download className="mr-2 w-4 h-4" />
-                Download
-              </>
-            )}
-          </Button>
-               <Button 
-            onClick={handleExplore}
-            disabled={!isValid || generateMutation.isPending}
-            className="bg-emerald-500 hover:bg-emerald-600 px-8 py-3"
-          >
-            {generateMutation.isPending ? (
-              <>Generating...</>
-            ) : (
-              <>
-                <Download className="mr-2 w-4 h-4" />
-                Explore
-              </>
-            )}
-          </Button>
+
+
+          <div className="flex gap-2"> {/* This controls spacing between Download & Explore */}
+            
+                <Button 
+                  onClick={handleExplore}
+                  disabled={!isValid || generateMutation.isPending}
+                  className="bg-emerald-500 hover:bg-emerald-600 px-8 py-3"
+                >
+                  {generateMutation.isPending ? (
+                    <>Generating...</>
+                  ) : (
+                    <>
+                      <Download className="mr-2 w-4 h-4" />
+                      Explore
+                    </>
+                  )}
+                </Button>
+                <Button 
+                  onClick={handleGenerate}
+                  disabled={!isValid || generateMutation.isPending}
+                  className="bg-emerald-500 hover:bg-emerald-600 px-8 py-3"
+                >
+                  {generateMutation.isPending ? (
+                    <>Generating...</>
+                  ) : (
+                    <>
+                      <Download className="mr-2 w-4 h-4" />
+                      Download
+                    </>
+                  )}
+                </Button>
+
+          </div>
         </div>
       </div>
     </div>
